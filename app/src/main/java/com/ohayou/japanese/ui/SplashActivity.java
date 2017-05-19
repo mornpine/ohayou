@@ -70,6 +70,7 @@ public class SplashActivity extends BaseActivity implements UIHandler.MsgHandler
 
     void showUpgradeDlg(boolean force, String url) {
         mUpgradeUrl = url;
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
                 .setCancelable(false)
                 .setMessage(R.string.dialog_optional_update)
@@ -93,6 +94,7 @@ public class SplashActivity extends BaseActivity implements UIHandler.MsgHandler
         }
 
         builder.create().show();
+
     }
 
     DialogInterface.OnClickListener updateListener = new DialogInterface.OnClickListener() {

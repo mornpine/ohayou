@@ -71,6 +71,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
+        <com.appodeal.ads.BannerView
+            android:id="@+id/appodealBannerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone" />
     </LinearLayout>
 
     <RelativeLayout
@@ -154,5 +160,6 @@
             android:layout_alignParentBottom="true"
             android:paddingBottom="20dp"
             android:src="@mipmap/ic_launcher"/>
+
     </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>

@@ -119,9 +119,10 @@
             android:paddingRight="10dp"
             android:visibility="gone"/>
     </FrameLayout>
-    <RelativeLayout
-        android:id="@+id/adViewContainer"
-        android:layout_width="wrap_content"
+    <com.appodeal.ads.BannerView
+        android:id="@+id/appodealBannerView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
 </LinearLayout>

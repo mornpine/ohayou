@@ -1,6 +1,7 @@
 package com.ohayou.japanese;
 
 import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import com.facebook.FacebookSdk;
 import com.ohayou.japanese.db.DatabaseHelper;
@@ -11,7 +12,7 @@ import com.ohayou.japanese.utils.NetworkUtils;
 /**
  * Created by Oxygen on 15/8/5.
  */
-public class OhayouApplication extends Application {
+public class OhayouApplication extends MultiDexApplication {
 
     DatabaseHelper mHelper;
 

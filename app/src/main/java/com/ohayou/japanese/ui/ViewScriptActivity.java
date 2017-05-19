@@ -18,8 +18,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.ads.AdSize;
-import com.facebook.ads.AdView;
+// import com.facebook.ads.AdSize;
+// import com.facebook.ads.AdView;
+import com.appodeal.ads.Appodeal;
 import com.ohayou.japanese.R;
 import com.ohayou.japanese.model.UserInfo;
 import com.ohayou.japanese.utils.Constants;
@@ -58,8 +59,8 @@ public class ViewScriptActivity extends BaseActivity implements View.OnClickList
     String mTranslateText;
     boolean mInTranslateMode = true;
 
-    RelativeLayout adViewContainer;
-    private AdView adView;
+    // RelativeLayout adViewContainer;
+    // private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,11 +97,14 @@ public class ViewScriptActivity extends BaseActivity implements View.OnClickList
         prepareAudio();
 
         if (!UserInfo.sRemovedAds) {
+            /*
             adViewContainer = (RelativeLayout) findViewById(R.id.adViewContainer);
 
             adView = new AdView(this, "1011245595574360_1071185489580370", AdSize.BANNER_320_50);
             adViewContainer.addView(adView);
             adView.loadAd();
+            */
+            Appodeal.show(this, Appodeal.BANNER_VIEW);
         }
     }
 
@@ -288,10 +292,12 @@ public class ViewScriptActivity extends BaseActivity implements View.OnClickList
     protected void onResume() {
         super.onResume();
         prepareAudio();
+        /*
         if (adViewContainer != null && UserInfo.sRemovedAds) {
             adViewContainer.setVisibility(View.GONE);
             adView.destroy();
         }
+        */
     }
 
     @Override
@@ -306,9 +312,11 @@ public class ViewScriptActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void onDestroy() {
+        /*
         if (adView != null) {
             adView.destroy();
         }
+        */
         super.onDestroy();
     }
 }

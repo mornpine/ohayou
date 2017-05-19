@@ -19,9 +19,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.ads.AdSize;
-import com.facebook.ads.AdView;
-import com.facebook.ads.InterstitialAd;
+// import com.facebook.ads.AdSize;
+// import com.facebook.ads.AdView;
+// import com.facebook.ads.InterstitialAd;
+import com.appodeal.ads.Appodeal;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.ohayou.japanese.OhayouApplication;
 import com.ohayou.japanese.R;
@@ -81,9 +82,11 @@ public class TextbookActivity extends BaseActivity implements View.OnClickListen
     Question2QuestionFragment mQ2Fragment = new Question2QuestionFragment();
     Question3QuestionFragment mQ3Fragment = new Question3QuestionFragment();
 
+    /*
     RelativeLayout adViewContainer;
     private AdView adView;
     private InterstitialAd interstitialAd;
+    */
 
     static final int[][] sQuestionNoIcon = {
             {R.drawable.questionno_grey_left, R.drawable.questionno_grey_center, R.drawable.questionno_grey_right},
@@ -168,11 +171,14 @@ public class TextbookActivity extends BaseActivity implements View.OnClickListen
         startFirstQuestion();
 
         if (!UserInfo.sRemovedAds) {
+            /*
             adViewContainer = (RelativeLayout) findViewById(R.id.adViewContainer);
 
             adView = new AdView(this, "1011245595574360_1071185489580370", AdSize.BANNER_320_50);
             adViewContainer.addView(adView);
             adView.loadAd();
+            */
+            Appodeal.show(this, Appodeal.BANNER_VIEW);
         }
         UserInfo.addObserver(this);
         loadInterstitialAd();
@@ -220,8 +226,11 @@ public class TextbookActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void loadInterstitialAd() {
+        /*
         interstitialAd = new InterstitialAd(this, "1011245595574360_1088955797803339");
         interstitialAd.loadAd();
+        */
+        Appodeal.cache(this, Appodeal.NON_SKIPPABLE_VIDEO);
     }
 
     void startQuestion(int idx) {
@@ -236,8 +245,13 @@ public class TextbookActivity extends BaseActivity implements View.OnClickListen
                     .setPositiveButton(R.string.return_home, returnHomeListener);
             builder.create().show();
 
+            /*
             if (interstitialAd.isAdLoaded()) {
                 interstitialAd.show();
+            }
+            */
+            if (Appodeal.isLoaded(Appodeal.NON_SKIPPABLE_VIDEO)) {
+                Appodeal.show(this, Appodeal.NON_SKIPPABLE_VIDEO);
             }
 
             if (mTextbook.complete == 0) {
@@ -617,10 +631,13 @@ public class TextbookActivity extends BaseActivity implements View.OnClickListen
     protected void onResume() {
         super.onResume();
         prepareAudio();
+        Appodeal.onResume(this, Appodeal.BANNER);
+        /*
         if (adViewContainer != null && UserInfo.sRemovedAds) {
             adViewContainer.setVisibility(View.GONE);
             adView.destroy();
         }
+        */
     }
 
     @Override
@@ -635,9 +652,11 @@ public class TextbookActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void onDestroy() {
+        /*
         if (adView != null) {
             adView.destroy();
         }
+        */
         super.onDestroy();
     }
 

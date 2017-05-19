@@ -14,8 +14,9 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.facebook.ads.AdSize;
-import com.facebook.ads.AdView;
+import com.appodeal.ads.Appodeal;
+// import com.facebook.ads.AdSize;
+// import com.facebook.ads.AdView;
 import com.ohayou.japanese.OhayouApplication;
 import com.ohayou.japanese.R;
 import com.ohayou.japanese.adapter.TextbookAdapter;
@@ -42,8 +43,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     HorizontalScrollView mCategoryBar;
     TextView mUser, mPoints, mLeftPoints;
     CheckBox mSelectCategory;
-    RelativeLayout adViewContainer;
-    private AdView adView;
+
+    // RelativeLayout adViewContainer;
+    // private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,15 +80,28 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         NetworkUtils.doJsonObjectRequest(Constants.URL_GET_TEXTBOOK_CATEGORY, null, categoryListener);
         NetworkUtils.doJsonObjectRequest(Constants.URL_GET_TEXTBOOKS, null, textbooksListener);
 
+        // Appodeal
+
+        String appKey = "7fadc00038f2cd73e1190dd2940ae838d45d6b061c7049d4";
+        Appodeal.setBannerViewId(R.id.appodealBannerView);
+        Appodeal.initialize(this, appKey, Appodeal.INTERSTITIAL | Appodeal.NON_SKIPPABLE_VIDEO | Appodeal.BANNER);
+
         if (!UserInfo.sRemovedAds) {
+            /*
             adViewContainer = (RelativeLayout) findViewById(R.id.adViewContainer);
 
             adView = new AdView(this, "1011245595574360_1071185489580370", AdSize.BANNER_320_50);
             adViewContainer.addView(adView);
             adView.loadAd();
+            */
+            Appodeal.show(this, Appodeal.BANNER_VIEW);
         }
 
+
         UserInfo.addObserver(this);
+
+
+
     }
 
     NetworkUtils.JsonObjectResultListener categoryListener = new NetworkUtils.JsonObjectResultListener() {
@@ -225,17 +240,22 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     protected void onResume() {
         super.onResume();
         mAdapter.notifyDataSetChanged();
+        Appodeal.onResume(this, Appodeal.BANNER);
+        /*
         if (adViewContainer != null && UserInfo.sRemovedAds) {
             adViewContainer.setVisibility(View.GONE);
             adView.destroy();
         }
+        */
     }
 
     @Override
     protected void onDestroy() {
+        /*
         if (adView != null) {
             adView.destroy();
         }
+        */
         UserInfo.removeObserver(this);
         super.onDestroy();
     }

@@ -16,7 +16,7 @@ public class LogUtils {
 
     public static void info(String tag, String msg) {
         if (DEBUG) {
-            Log.i(tag, msg + CommUtils.getCaller());
+            // Log.i(tag, msg + CommUtils.getCaller());
         }
     }
 
@@ -37,7 +37,7 @@ public class LogUtils {
     }
 
     public static void error(String tag, String msg) {
-        Log.e(tag, msg + CommUtils.getCaller());
+        // Log.e(tag, msg + CommUtils.getCaller());
     }
 
 
