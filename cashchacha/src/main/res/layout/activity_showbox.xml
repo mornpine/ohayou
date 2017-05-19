@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_actionbar"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_cashchacha"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:padding="20dp"
+        android:gravity="center_vertical"
+        android:background="@color/bg_account"
+        android:orientation="horizontal"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Account:"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text=""
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/points_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_mypoints"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="20dp"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="0"
+            android:shadowDy="2"
+            android:shadowRadius="1"
+            android:text="Available Points"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/points"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:paddingRight="35dip"
+            android:text="0"
+            android:textColor="@color/yellow"
+            android:textSize="35sp"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/btn_tapjoy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/tapjoy"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="31dp"
+                    android:layout_marginLeft="105dp"
+                    android:gravity="center_vertical"
+                    android:text="Tapjoy"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="105dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="31dp"
+                    android:gravity="center_vertical"
+                    android:text="Earn Points"
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp"/>
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/btn_nativex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/nativex"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="31dp"
+                    android:layout_marginLeft="105dp"
+                    android:gravity="center_vertical"
+                    android:text="NativeX"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="105dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="31dp"
+                    android:gravity="center_vertical"
+                    android:text="Earn Points"
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp"/>
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/btn_adgate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/adgate"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="31dp"
+                    android:layout_marginLeft="105dp"
+                    android:gravity="center_vertical"
+                    android:text="AdGate"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="105dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="31dp"
+                    android:gravity="center_vertical"
+                    android:text="Earn Points"
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp"/>
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/btn_supersonic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/supersonic"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="31dp"
+                    android:layout_marginLeft="105dp"
+                    android:gravity="center_vertical"
+                    android:text="SupersonicAds"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="105dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="31dp"
+                    android:gravity="center_vertical"
+                    android:text="Earn Points"
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp"/>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="85dip"
+                android:background="@drawable/bg_cashout"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="2dip"
+                android:paddingRight="15dip">
+
+                <ImageView
+                    android:id="@+id/paypal_logo"
+                    android:layout_width="100dip"
+                    android:layout_height="85dip"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/icon_paypal"/>
+
+                <EditText
+                    android:id="@+id/paypal_account"
+                    style="@style/inputStyle"
+                    android:drawableLeft="@drawable/icon_pwd"
+                    android:hint="PayPal Account"
+                    android:inputType="text"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/withdraw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:padding="20dp"
+                android:text="Withdraw All Points (>600)"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:background="@color/bg_button_blue"
+                />
+            <TextView
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:gravity="center_horizontal"
+                android:padding="20dp"
+                android:text="Log Out and Change Account"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:background="@color/bg_account"
+                />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

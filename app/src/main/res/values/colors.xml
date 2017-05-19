@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_select">#97b85a</color>
+    <color name="disabled">#95959d</color>
+    <color name="disabled_dark">#72727a</color>
+    <color name="green_normal">#2d9270</color>
+    <color name="btn_start">#2d874b</color>
+    <color name="green_pressed">#207156</color>
+    <color name="score_normal">#E8CF93</color>
+    <color name="score_pressed">#D7BE87</color>
+    <color name="store_points">#f7efdb</color>
+    <color name="bg_right">#deeee6</color>
+    <color name="bg_wrong">#f7efdb</color>
+    <color name="button_text">#d29a2a</color>
+    <color name="orange_dark">#d19826</color>
+    <color name="buy_text_yellow">#998027</color>
+    <color name="buy_text_green">#308476</color>
+    <color name="buy_text_red">#ab4355</color>
+    <color name="separator">#e6e4e6</color>
+    <color name="passed">#97b75a</color>
+    <color name="failed">#f56942</color>
+    <color name="translate">#e9cd8f</color>
+    <color name="bg_black30">#dd000000</color>
+    <color name="bg_black50">#80000000</color>
+</resources>
