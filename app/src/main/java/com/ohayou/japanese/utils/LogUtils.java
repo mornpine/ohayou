@@ -16,7 +16,7 @@ public class LogUtils {
 
     public static void info(String tag, String msg) {
         if (DEBUG) {
-            // Log.i(tag, msg + CommUtils.getCaller());
+            Log.i(tag, msg + CommUtils.getCaller());
         }
     }
 

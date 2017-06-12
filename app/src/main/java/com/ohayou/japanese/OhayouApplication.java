@@ -1,6 +1,6 @@
 package com.ohayou.japanese;
 
-import android.app.Application;
+// import android.app.Application;
 import android.support.multidex.MultiDexApplication;
 
 import com.facebook.FacebookSdk;

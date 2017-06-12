@@ -1,7 +1,6 @@
 package com.ohayou.japanese.utils;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.FileAsyncHttpResponseHandler;
+import com.loopj.android.http.*;
 
 import java.io.File;
 

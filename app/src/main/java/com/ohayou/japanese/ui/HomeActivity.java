@@ -85,6 +85,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         String appKey = "7fadc00038f2cd73e1190dd2940ae838d45d6b061c7049d4";
         Appodeal.setBannerViewId(R.id.appodealBannerView);
         Appodeal.initialize(this, appKey, Appodeal.INTERSTITIAL | Appodeal.NON_SKIPPABLE_VIDEO | Appodeal.BANNER);
+        // Appodeal.setRewardedVideoCallbacks(new AppodealRewardedVideoCallbacks(this));
 
         if (!UserInfo.sRemovedAds) {
             /*

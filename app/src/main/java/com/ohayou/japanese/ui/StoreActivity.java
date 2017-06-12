@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.adgatemedia.sdk.classes.AdGateMedia;
+import com.appodeal.ads.Appodeal;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.ohayou.japanese.R;
 import com.ohayou.japanese.model.SettingsStore;
@@ -21,10 +22,10 @@ import com.ohayou.japanese.utils.Inventory;
 import com.ohayou.japanese.utils.LogUtils;
 import com.ohayou.japanese.utils.NetworkUtils;
 import com.ohayou.japanese.utils.Purchase;
-import com.supersonic.mediationsdk.sdk.Supersonic;
+// import com.supersonic.mediationsdk.sdk.Supersonic;
 import com.supersonic.mediationsdk.sdk.SupersonicFactory;
-import com.tapjoy.TapjoyConnect;
-import com.tapjoy.TapjoyConnectNotifier;
+// import com.tapjoy.TapjoyConnect;
+// import com.tapjoy.TapjoyConnectNotifier;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,7 +55,7 @@ public class StoreActivity extends BaseActivity implements View.OnClickListener 
     boolean mHelperSetup;
     Inventory mInventory;
 
-    private Supersonic mMediationAgent;
+    // private Supersonic mMediationAgent;
     private AdGateMedia adGateMedia;
 
     @Override
@@ -62,6 +63,13 @@ public class StoreActivity extends BaseActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_store);
+
+        // Appodeal
+        String appKey = "7fadc00038f2cd73e1190dd2940ae838d45d6b061c7049d4";
+        Appodeal.getUserSettings(this).setUserId("123123");
+        Appodeal.initialize(this, appKey, Appodeal.REWARDED_VIDEO);
+        Appodeal.setRewardedVideoCallbacks(new AppodealRewardedVideoCallbacks(this));
+        Appodeal.cache(this, Appodeal.REWARDED_VIDEO);
 
         mPoints = (TextView) findViewById(R.id.points);
         mPromoCode = (EditText) findViewById(R.id.promo_code);
@@ -83,8 +91,8 @@ public class StoreActivity extends BaseActivity implements View.OnClickListener 
         findViewById(R.id.buy_points2).setOnClickListener(this);
         findViewById(R.id.buy_points3).setOnClickListener(this);
         findViewById(R.id.redeem).setOnClickListener(this);
-        findViewById(R.id.btn_supersonic).setOnClickListener(this);
-        findViewById(R.id.btn_tapjoy).setOnClickListener(this);
+        // findViewById(R.id.btn_supersonic).setOnClickListener(this);
+        // findViewById(R.id.btn_tapjoy).setOnClickListener(this);
         findViewById(R.id.btn_adgate).setOnClickListener(this);
         mBuyScript.setOnClickListener(this);
         mRemoveAds.setOnClickListener(this);
@@ -122,6 +130,7 @@ public class StoreActivity extends BaseActivity implements View.OnClickListener 
 
     void initOfferwall() {
         Hashtable<String, Object> connectFlags = new Hashtable<String, Object>();
+        /*
         TapjoyConnect.requestTapjoyConnect(mContext,
                 "b5af377d-a011-4e08-a4df-73feeef862a1", "ta83faARTgik33P-7vhioQEC8lY1nvOWeCJqcJLW2DScCtR7h9aOiOnxRBsg", connectFlags, new TapjoyConnectNotifier() {
                     @Override
@@ -133,9 +142,10 @@ public class StoreActivity extends BaseActivity implements View.OnClickListener 
                     public void connectFail() {
                     }
                 });
+        */
 
-        mMediationAgent = SupersonicFactory.getInstance();
-        mMediationAgent.initOfferwall(this, "3d3c4121", UserInfo.sEmail);
+        // mMediationAgent = SupersonicFactory.getInstance();
+        // mMediationAgent.initOfferwall(this, "3d3c4121", UserInfo.sEmail);
         adGateMedia = new AdGateMedia("nqyY", UserInfo.sEmail);
     }
 
@@ -327,12 +337,17 @@ public class StoreActivity extends BaseActivity implements View.OnClickListener 
                     NetworkUtils.doJsonObjectRequest(Constants.URL_CHECK_PROMO_CODE, NetworkUtils.genParamList("email", UserInfo.sEmail, "promo_code", promoCode), checkPromoCodeListener);
                 }
                 break;
+            /*
             case R.id.btn_supersonic:
                 mMediationAgent.showOfferwall();
                 break;
+            */
             case R.id.btn_adgate:
-                adGateMedia.showOfferWall(null, mContext);
+                // adGateMedia.showOfferWall(null, mContext);
+                Appodeal.show(this, Appodeal.REWARDED_VIDEO);
+
                 break;
+            /*
             case R.id.btn_tapjoy:
                 TapjoyConnect connect = TapjoyConnect.getTapjoyConnectInstance();
                 if (connect != null) {
@@ -341,6 +356,7 @@ public class StoreActivity extends BaseActivity implements View.OnClickListener 
                     Toast.makeText(this, "Tapjoy is connecting, try later!", Toast.LENGTH_SHORT).show();
                 }
                 break;
+             */
         }
 
         if (skuName != null) {

@@ -311,7 +311,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/separator"/>
-
+<!--
             <RelativeLayout
                 android:id="@+id/btn_tapjoy"
                 android:layout_width="match_parent"
@@ -362,7 +362,7 @@
                     android:layout_alignParentRight="true"
                     android:src="@drawable/icon_dic"/>
             </RelativeLayout>
-
+-->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

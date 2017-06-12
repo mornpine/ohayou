@@ -8,8 +8,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.FileAsyncHttpResponseHandler;
+import com.loopj.android.http.*;
 import com.ohayou.japanese.R;
 import com.ohayou.japanese.utils.CommUtils;
 import com.ohayou.japanese.utils.Constants;
