@@ -66,10 +66,10 @@ public class StoreActivity extends BaseActivity implements View.OnClickListener 
 
         // Appodeal
         String appKey = "7fadc00038f2cd73e1190dd2940ae838d45d6b061c7049d4";
-        Appodeal.getUserSettings(this).setUserId("123123");
+        Appodeal.getUserSettings(this).setUserId(UserInfo.sEmail);
         Appodeal.initialize(this, appKey, Appodeal.REWARDED_VIDEO);
         Appodeal.setRewardedVideoCallbacks(new AppodealRewardedVideoCallbacks(this));
-        Appodeal.cache(this, Appodeal.REWARDED_VIDEO);
+        // Appodeal.cache(this, Appodeal.REWARDED_VIDEO);
 
         mPoints = (TextView) findViewById(R.id.points);
         mPromoCode = (EditText) findViewById(R.id.promo_code);
