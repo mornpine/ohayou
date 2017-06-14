@@ -18,7 +18,7 @@ class AppodealRewardedVideoCallbacks implements RewardedVideoCallbacks {
 
     @Override
     public void onRewardedVideoFailedToLoad() {
-        Utils.showToast(mActivity, "onRewardedVideoFailedToLoad");
+        // Utils.showToast(mActivity, "onRewardedVideoFailedToLoad");
     }
 
     @Override
@@ -28,11 +28,11 @@ class AppodealRewardedVideoCallbacks implements RewardedVideoCallbacks {
 
     @Override
     public void onRewardedVideoFinished(int amount, String name) {
-        Utils.showToast(mActivity, String.format("onRewardedVideoFinished. Reward: %d %s", amount, name));
+        // Utils.showToast(mActivity, String.format("onRewardedVideoFinished. Reward: %d %s", amount, name));
     }
 
     @Override
     public void onRewardedVideoClosed(boolean finished) {
-        Utils.showToast(mActivity, String.format("onRewardedVideoClosed,  finished: %s", finished));
+        // Utils.showToast(mActivity, String.format("onRewardedVideoClosed,  finished: %s", finished));
     }
 }

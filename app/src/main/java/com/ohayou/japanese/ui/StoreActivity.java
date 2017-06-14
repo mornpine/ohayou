@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.adgatemedia.sdk.classes.AdGateMedia;
 import com.appodeal.ads.Appodeal;
+import com.appodeal.ads.RewardedVideoCallbacks;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.ohayou.japanese.R;
 import com.ohayou.japanese.model.SettingsStore;
@@ -54,6 +56,8 @@ public class StoreActivity extends BaseActivity implements View.OnClickListener 
     IabHelper mHelper;
     boolean mHelperSetup;
     Inventory mInventory;
+    RelativeLayout reward;
+    TextView textV;
 
     // private Supersonic mMediationAgent;
     private AdGateMedia adGateMedia;
@@ -65,10 +69,10 @@ public class StoreActivity extends BaseActivity implements View.OnClickListener 
         setContentView(R.layout.activity_store);
 
         // Appodeal
-        String appKey = "7fadc00038f2cd73e1190dd2940ae838d45d6b061c7049d4";
+        // String appKey = "7fadc00038f2cd73e1190dd2940ae838d45d6b061c7049d4";
         Appodeal.getUserSettings(this).setUserId(UserInfo.sEmail);
-        Appodeal.initialize(this, appKey, Appodeal.REWARDED_VIDEO);
-        Appodeal.setRewardedVideoCallbacks(new AppodealRewardedVideoCallbacks(this));
+        // Appodeal.initialize(this, appKey, Appodeal.REWARDED_VIDEO);
+        // Appodeal.setRewardedVideoCallbacks(new AppodealRewardedVideoCallbacks(this));
         // Appodeal.cache(this, Appodeal.REWARDED_VIDEO);
 
         mPoints = (TextView) findViewById(R.id.points);
@@ -93,10 +97,68 @@ public class StoreActivity extends BaseActivity implements View.OnClickListener 
         findViewById(R.id.redeem).setOnClickListener(this);
         // findViewById(R.id.btn_supersonic).setOnClickListener(this);
         // findViewById(R.id.btn_tapjoy).setOnClickListener(this);
+
         findViewById(R.id.btn_adgate).setOnClickListener(this);
+
+        reward = (RelativeLayout) findViewById(R.id.btn_adgate);
+        textV = (TextView) findViewById(R.id.text_video);
+
+        textV.setText("Loading...");
+
+        Appodeal.setRewardedVideoCallbacks(new RewardedVideoCallbacks() {
+            @Override
+            public void onRewardedVideoLoaded() {
+                textV.setText("Watch a Video (Earn 15 Points)");
+            }
+            @Override
+            public void onRewardedVideoFailedToLoad() {
+                textV.setText("No Video to Watch");
+            }
+            @Override
+            public void onRewardedVideoShown() {
+                // Log.d("Appodeal", "onRewardedVideoShown");
+            }
+            @Override
+            public void onRewardedVideoFinished(int amount, String name) {
+                // Log.d("Appodeal", "onRewardedVideoFinished");
+            }
+            @Override
+            public void onRewardedVideoClosed(boolean finished) {
+                // Log.d("Appodeal", "onRewardedVideoClosed");
+            }
+        });
+
+
+
         mBuyScript.setOnClickListener(this);
         mRemoveAds.setOnClickListener(this);
 
+        // Appodeal
+
+        Appodeal.setRewardedVideoCallbacks(new RewardedVideoCallbacks() {
+            @Override
+            public void onRewardedVideoLoaded() {
+                // Log.d("Appodeal", "onRewardedVideoLoaded");
+            }
+            @Override
+            public void onRewardedVideoFailedToLoad() {
+                // Log.d("Appodeal", "onRewardedVideoFailedToLoad");
+            }
+            @Override
+            public void onRewardedVideoShown() {
+                // Log.d("Appodeal", "onRewardedVideoShown");
+            }
+            @Override
+            public void onRewardedVideoFinished(int amount, String name) {
+                // Log.d("Appodeal", "onRewardedVideoFinished");
+            }
+            @Override
+            public void onRewardedVideoClosed(boolean finished) {
+                // Log.d("Appodeal", "onRewardedVideoClosed");
+            }
+        });
+
+        // End of Appodeal
 
         if (SettingsStore.init) {
             mPoints1.setText(String.valueOf(SettingsStore.points_exchange_1));
@@ -147,6 +209,7 @@ public class StoreActivity extends BaseActivity implements View.OnClickListener 
         // mMediationAgent = SupersonicFactory.getInstance();
         // mMediationAgent.initOfferwall(this, "3d3c4121", UserInfo.sEmail);
         adGateMedia = new AdGateMedia("nqyY", UserInfo.sEmail);
+
     }
 
     IabHelper.QueryInventoryFinishedListener inventoryListener = new IabHelper.QueryInventoryFinishedListener() {
